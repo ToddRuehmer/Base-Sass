@@ -1,0 +1,396 @@
+﻿
+
+/*:: Imports
+	*---------------------------------------------------- */
+
+@import 'logic'
+
+
+/*:: Toolbox
+	*---------------------------------------------------- */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary, time, mark, audio, video
+	margin: 0
+	padding: 0
+	border: 0
+	font: inherit
+	vertical-align: baseline
+	
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+	display: block
+body
+	line-height: 1em
+blockquote, q
+	quotes: none
+blockquote:before, blockquote:after, q:before, q:after
+	content: ''
+	content: none
+table
+	border-collapse: collapse
+	border-spacing: 0
+
+*:focus
+	outline: none
+		
+/*Default Styles*/
+
+body
+	color: $BasicTextColor
+	font: normal 15px/24px "Open Sans", sans-serif
+a
+	color: $Accent
+	text-decoration: underline
+	&:hover, &:active, &:focus
+		color: $Accent
+		text-decoration: none
+img
+	display: block
+	max-width: 100%
+	
+strong
+	font-weight: bold
+	a:hover
+		text-decoration: none
+em
+	font-style: italic
+h1
+	border-bottom: 1px solid $Accent
+	color: $DarkGrey
+	font: 30px/35px "Stag", Helvetica, Arial, sans-serif
+	margin: 14px 0 26px
+	text-transform: uppercase
+h2
+	color: $Accent
+	font: bold 30px/34px "Stag", Helvetica, Arial, sans-serif
+	margin-bottom: 18px
+	text-align: center
+	& a
+		color: $DarkGrey
+		text-decoration: none
+h3
+	color: $Accent
+	font: bold 20px/24px "Stag", Helvetica, Arial, sans-serif
+	margin: 0 0 4px 0
+	text-align: center
+	a
+		color: $Accent
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+h4
+	font: bold 14px/18px "Stag", helvetica, arial, sans-serif
+	margin-bottom: 10px
+	text-transform: uppercase
+	& a
+		color: $Accent
+		display: block
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+h5
+	font-size: 12px
+	line-height: 21px
+	font-weight: normal
+	text-transform: uppercase
+p
+	margin: 0 0 18px 0
+ul
+	margin: 0 0 10px 20px
+	padding-bottom: 10px
+ol
+	margin: 0 0 10px 20px
+	padding-bottom: 10px
+li
+	list-style-position: outside
+	list-style-type: square
+	margin: 0 0 7px 0 
+	ul, ol
+		margin-top: 10px
+
+dl
+	+ClearFix
+	clear: both
+	margin: 20px 0
+dt
+	clear: left
+	float: left
+	font-family: "Stag"
+	margin: 0 4% 10px 0
+	text-align: right
+	text-transform: uppercase
+	width: 10%
+	&:after
+		content: ":"
+		display: inline-blick
+dd
+	float: left
+	font-family: "Stag"
+	margin: 0 0 10px
+	width: 86%
+
+tr:nth-child(even)
+	background: $LightGrey
+th
+	border-bottom: 1px solid $DarkGrey
+	font-size: 14px
+	font-weight: bold
+	line-height: 18px
+	padding: 10px 20px
+	vertical-align: middle
+td
+	padding: 10px 20px
+	vertical-align: middle
+
+::selection
+	background: $BasicTextColor
+	color: #fff /* Safari */
+::-moz-selection
+	background: $BasicTextColor
+	color: #fff /* Firefox */
+
+.more
+	background: $Accent
+	color: #fff
+	display: inline-block
+	font-size: 10px
+	font-weight: bold
+	padding: 4px 10px
+	position: relative
+	text-decoration: none
+	&:after
+		+Transition(all, .2s)
+		content: ""
+		display: inline-block
+		font: 10px/13px "Font Awesome"
+		left: 0
+		padding-left: 5px
+		position: relative
+	&:hover
+		color: #fff
+		&:after
+			left: 5px
+p.required, span.required
+	color: $Accent
+	float: none !important
+	font-size: 11px
+	margin-bottom: 0
+	text-transform: uppercase
+.note
+	font-size: smaller
+.caption
+	clear: both
+	font-size: smaller
+	line-height: 18px
+	margin: 0
+
+.btn
+	+button
+.btn-2
+	+button(#fff, #ededed, $Accent)
+.btn-3
+	+button($DarkGrey, transparent, #fff)
+	padding: 4px 20px
+
+.flush-right
+	clear: right
+	float: right
+	margin-right: -19px
+.flush-left
+	clear: left
+	float: left
+	margin-left: -19px
+.overflow-right
+	clear: right
+	float: right
+	margin: 0 -336px 20px 20px
+.box-full
+	border-radius: 8px
+	clear: both
+	float: right
+	margin: 0 0 22px -22px
+	max-width: 680px
+.box-right, .right
+	clear: right
+	float: right
+	margin: 0 0 30px 30px
+	max-width: 32%
+	text-align: right
+	& img, & img
+		float: right
+		margin: 0 auto 10px auto
+		max-width: 100%
+.box-small-right, .small-right
+	clear: right
+	float: right
+	margin: 0 0 30px 30px
+	max-width: 20%
+	text-align: right
+	.box-small-right img
+		margin: 0 auto 10px auto
+.box-left, .left
+	clear: right
+	float: left
+	margin: 0 30px 30px 0
+	max-width: 32%
+	& img, & img
+		margin: 0 auto 10px auto
+.box-small-left, .small-left
+	clear: left
+	float: left
+	margin: 0 30px 30px 0
+	max-width: 20%
+	& img
+		margin: 0 auto 10px auto
+.box-bottom
+	background: #fff
+	border: 1px solid #ddd
+	border-radius: 4px
+	clear: right
+	margin: 20px 0 0 0
+	padding: 10px
+	& img
+		margin: 0 auto
+
+.field
+	+ClearFix
+	clear: both
+	margin: 0 0 16px 0
+	padding: 0
+	position: relative
+	width: 100%
+	&.error input, &.error textarea
+		border-bottom: 4px solid #fe7200
+	& label
+		+BorderBox
+		float: left
+		font-size: 13px
+		padding: 6px 9px
+		width: 32%
+	& span
+		+BorderBox
+		float: left
+		margin-right: 5%
+		padding: 6px 10px
+		width: 32%
+		&.required
+			display: inline
+			padding: 0
+.text input
+	+BorderBox
+	border: none
+	color: $BasicTextColor
+	float: left
+	font: normal 15px/23px "Stag" Helvetica, Arial, sans-serif
+	height: 39px
+	padding: 6px 10px
+	width: 68%
+textarea
+	+BorderBox
+	border: none
+	color: $BasicTextColor
+	float: left
+	font: normal 15px/24px "Stag" Helvetica, Arial, sans-serif
+	height: 94px
+	padding: 6px 10px
+	resize: vertical
+	width: 68%
+input.text:-webkit-autofill, .text input:-webkit-autofill
+	background: red
+select
+	font: normal 15px/20px "Stag" Helvetica, Arial, sans-serif
+	height: 36px
+	padding: 4px 6px 4px 10px
+	width: 68%
+.radio 
+	input
+		display: inline-block
+		float: none 
+		&[type='text']
+			+BorderBox
+			float: left
+			height: 26px
+			line-height: 17px
+			margin: 3px
+			padding: 4px 5px
+			vertical-align: baseline
+			width: 30%
+	label
+		display: inline-block
+		float: none
+		padding: 6px 4px
+		vertical-align: baseline
+		width: auto
+.checkbox
+	background: transparent
+	border: none
+	label
+		display: inline-block
+		float: none
+		max-width: 90%
+		padding: 6px 10px
+		vertical-align: baseline
+		width: auto
+	input
+		display: inline-block
+		float: none
+		line-height: 20px
+		margin: 0 5px
+		vertical-align: baseline
+.field.submit
+	clear: right
+	float: right
+	margin: 30px 0 0 0
+	width: auto
+	& button, & input
+		+button
+		background: $Accent + #222 !important
+		color: #fff !important
+		display: block
+		width: 100%
+		&:hover
+			background: $Accent + #444 !important
+	& .reset
+		background: none
+		box-shadow: none
+		color: $Accent
+		font-weight: 600
+		line-height: 31px
+		padding: 0 10px 0 0
+fieldset
+	border: 1px dotted $DarkGrey
+	padding: 10px
+legend
+	font: bold 22px/30px "Stag" Helvetica, Arial, sans-serif
+	padding: 5px
+	
+.success
+	background: #d5f4c8
+	border-bottom: 1px solid #65de2f
+	border-top: 1px solid #65de2f
+	margin-top: 30px
+	padding: 20px 20px 7px
+	text-align: center
+	h2
+		color: $BasicTextColor
+		text-align: center
+
+
+/*:: BX Slider Reset
+	*---------------------------------------------------- */
+
+.bx-wrapper
+	margin-bottom: 0
+	.bx-viewport
+		border: none
+		box-shadow: none
+		left: 0
+	.bx-pager.bx-default-pager a
+		background: #fff
+		height: 8px
+		width: 8px
+		&.active
+			background: $Accent
