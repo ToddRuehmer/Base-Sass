@@ -15,10 +15,8 @@ body.no-scroll
 	overflow-x: hidden
 	+Transition(left, .2s)
 #main
-	+container-fixed()
 	padding: 0
 .inner 
-	+container()
 	max-width: 940px
 	padding-bottom: 50px
 	position: relative
@@ -834,7 +832,6 @@ footer
 			height: auto !important
 			width: 100%
 			h3
-				+make-xs-column(4)
 				display: table-cell
 				float: none
 				padding: 0
