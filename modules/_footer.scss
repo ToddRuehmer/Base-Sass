@@ -1,0 +1,109 @@
+﻿//Footer
+.BR-PhatFooter { background: $NearWhite; font-size: .9rem; 
+    .BR-LayoutConstraint { padding-bottom: $global-padding; padding-top: $global-padding; @include flex-grid-row; @include flex-direction(column); @include flex-align($y:top); display: -webkit-flex; -webkit-flex-direction: column; -webkit-align-items: flex-start; 
+        
+        @include breakpoint(large) {
+            @include flex-direction(row);
+        }
+    }
+    a { display: block; text-decoration: none; 
+        
+        @include breakpoint(medium) {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+        @include breakpoint(large) {
+            display: block;
+            margin-right: 0;
+        }
+    }
+}
+.BR-PhatFooterSection { margin-bottom: 1rem; @include Flex(1); @include FlexBox($wrap:wrap); -webkit-flex-direction: column;
+    &--Wide { @include Flex(2); }
+    img, svg { display: none; }
+        
+    @include breakpoint(large) {
+        display: block; margin-bottom: 0;
+    }
+}
+.BR-PhatFooterSectionTitle { margin: 0; width: 100%; @extend h3;
+    .BR-NavSpacer { min-height: 1em; 
+        
+        @include breakpoint(large) {
+            display: block;
+        }
+    }
+}
+.BR-PhatFooterColumn { @include Flex(1);
+    img { display: none; }
+}
+.BR-PhatFooterColumnTitle { margin-top: .5em; @extend h6; 
+    &:first-child { margin-top: 0; }
+}
+
+.BR-Footer { background: $FaintBlue; border-top: 1px solid $MediumGrey; font-size: .9rem; font-weight: bold;
+    .BR-LayoutConstraint { padding-bottom: $global-padding; padding-top: $global-padding; @include flex-grid-row; @include flex-direction(column); display: -webkit-flex; -webkit-flex-direction: column; -webkit-flex-flow: row wrap;
+        
+        @include breakpoint(large) {
+            @include flex-direction(row);
+        }
+    }
+}
+.BR-FooterContent { margin-top: 1rem; @include FlexBox; @include flex-direction(column); -webkit-flex-direction: column; -webkit-flex-flow: column nowrap;
+    img { margin-bottom: 1rem; }
+    p { padding-right: 1rem; @include FlexBasis(55%); }
+
+    @include breakpoint(medium) { 
+        @include flex-direction(row);
+        img { margin-bottom: 2rem; }
+    }
+    @include breakpoint(large) { 
+        margin-top: 0;
+        @include FlexBasis(47%);
+    }
+}
+.BR-FooterContentImage { @include FlexBasis(40%); }
+.BR-FooterNavColumnTitle { font-size: .8rem; line-height: 1.8em; }
+.BR-FooterMinorNav { font-size: .75rem; margin-top: 1rem; @include FlexBox; @include flex-direction(column); -webkit-flex-flow: column wrap; -webkit-justify-content: space-between;
+        
+    @include breakpoint(medium) {
+        margin-top: 0;
+        @include FlexBasis(50%);
+        @include flex-direction(row);
+        -webkit-flex-flow: row nowrap;
+    }
+
+    a { display: block; text-decoration: none; }
+}
+.BR-FooterMinorNavColumn { margin-left: 0; @include Flex(1); 
+    &:first-child { margin-left: 0; }
+    br { display: none; }
+        
+    @include breakpoint(medium) {
+        margin-bottom: 1rem; 
+        margin-left: 3vw;
+        a { display: inline-block; margin-right: 1.5rem; }
+        br { display: block; }
+    }
+}
+.BR-FooterBottom { color: $Grey; font-size: .75rem; padding-top: $global-padding; @include FlexBasis(100%); @include FlexBox($alignItems:flex-end,$wrap:wrap); -webkit-flex-wrap: wrap;
+    p { @include FlexBox($justify:flex-start,$alignItems:flex-end,$wrap:wrap); margin-bottom: 0; width: 100%;
+        a { order: -1; }
+        img { display: inline-block; vertical-align: bottom; }
+
+        @include breakpoint(medium) {
+            width: auto;
+            a { order: 1; }
+            img { margin: 0 0 0 .75rem; }
+        }
+    }
+    img { display: inline-block; margin-right: .75rem; }
+}
+.BR-FooterSocial { @include FlexGrow(1); @include FlexBox($justify:flex-start); }
+.BR-FooterSocialIcon { margin-right: .75rem; }
+.BR-Copyright { @include FlexBasis(100%); 
+
+    @include breakpoint(medium) {
+        @include FlexBasis(auto);
+    }
+}

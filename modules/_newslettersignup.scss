@@ -1,0 +1,27 @@
+﻿//Newsletter Signup
+.BR-NewsletterSignup { background: $Yellow; padding: $global-padding 0;
+    .page-header { text-align: center; @include FlexBasis(100%);
+        & > * { color: #000; margin: 0; text-transform: uppercase; @extend h1; }
+    }
+    .has-error { font-size: .8em; text-align: center; @include FlexBasis(100%); 
+        ul { margin: 0; }
+        li { display: inline-block; margin: 0 .5rem; }
+    }
+    form { padding: $global-padding*.13333333333 0 0;
+        @include breakpoint(map-get($breakpoints, medium)) {
+            @include flex-grid-row; @include flex-align($y:stretch);
+        }
+    }
+    label { display: none; }
+    .form-group { @include Flex(1); 
+        &__large { @include Flex(1.5); }
+        
+        @include breakpoint(map-get($breakpoints, medium)) {
+            margin: 0 1rem 0 0;
+        }
+    }
+    .help-block { font-size: .8em; text-transform: uppercase; }
+    input, .BR-Input { background: #fff;}
+    .form-submit-border { @include Flex(.577); }
+    .btn { @extend button; }
+}

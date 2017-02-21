@@ -1,0 +1,146 @@
+﻿//Header
+.BR-Header { padding-bottom: 1rem; padding-top: 2rem; position: relative;
+    .BR-LayoutConstraint { display: block; @include flex-grid-row; @include flex-align($x:justify,$y:middle); display: -webkit-flex; -webkit-flex-flow: row wrap; -webkit-justify-content: space-between; -webkit-align-items: center;
+        &:before, &:after { display: none; }
+    }
+}
+.BR-SiteId { margin-right: auto; min-width: 100px; max-width: 229px; width: 18%; 
+
+    @include breakpoint(large) {
+        margin-left: 0; margin-right: 0;
+    }
+}
+.BR-MainNav { display: none; @include FlexBasis(51%); @include flex-align-self($y:bottom);
+
+    @include breakpoint(large) { 
+        @include flex;
+        a { font-size: .8em; font-weight: 800; }
+    }
+    @include breakpoint(xlarge) {
+        @include FlexBasis(60%);
+        a { font-size: 1em; font-weight: bold; }
+    }
+}
+.BR-MegaMenuItem { display: block; margin-bottom: -1rem; margin-right: 2rem; padding-bottom: 1rem; }
+.BR-MainNavLink { cursor: default; display: block; font-weight: 700; line-height: .9rem; text-decoration: none; text-transform: uppercase; }
+.BR-MegaMenuDropdown { background: $LightGrey; @include flex; @include flex-grid-layout(4); display: none; max-width: 46rem; opacity: 0; padding: 2rem 3vw; position: absolute; top: 100%; z-index: 1; @include Transition(all,.2s .1s); @include Transform(translate(-3vw,1rem)); 
+    .BR-MegaMenuItem:hover & { @include flex; }
+    .BR-MegaMenuItem__visible & { opacity: 1; @include Transform(translate(-3vw,0)); }
+    
+    a { font-size: .85rem; font-weight: 800; position: relative; text-align: center; text-decoration: none; text-transform: none; @include FlexBasis(100%);
+        &:first-child { border-left: none; padding-left: 0; }
+        &:nth-child(3n) { margin-right: 0; }
+        &.BR-HasImg { margin: 0 1% 1rem; min-width: 9rem; text-align: center; @include FlexBasis(23%); }
+
+        &:hover .BR-NavRollover { opacity: 1; }
+    }
+    img { margin: 0 auto .5rem; max-height: 6rem; 
+        &.BR-NavRollover { left: 50%; opacity: 0; position: absolute; top: 0; @include Transform(translate(-50%,0)); @include Transition(all,.2s); }
+    }
+
+    .BR-NavigationSectionGroup &, .BR-MegaMenuItem:hover .BR-NavigationSectionGroup & { display: block; padding: 0 2rem 0 0; position: static; @include Transform(none);
+        a { display: block; margin-bottom: .5rem; text-align: left; }
+    }
+}
+.BR-NavigationSectionGroup {
+    .BR-MegaMenuDropdown & { @include Flex(1); }
+}
+.BR-MegaMenuColumnTitle { font-size: .85rem; font-weight: 800; line-height: .9rem; margin-bottom: .5rem; padding-right: 2rem; }
+
+.BR-UtilityNav { margin-bottom: 0; margin-right: 1rem;
+    
+    @include breakpoint(large) { 
+        margin-bottom: 1rem; margin-right: 0; min-width: 39%; @include FlexBox($justify:flex-start, $alignItems:center);
+    }
+
+    .BR-UtilityNavLink { color: $Blue; display: none; font-size: .8rem; font-weight: 700; line-height: 1.2em; padding: .5em 1em; text-decoration: none; text-transform: uppercase; 
+        &:first-child { border-left: none; padding-left: 0; }
+        &.BR-login { display: inline-block; }
+        
+        @include breakpoint(large) { 
+            border-left: 1px solid $Blue; display: inline-block;
+        }
+    }
+}
+.BR-UtilityNavIcon { display: inline-block; fill: currentColor; height: 1rem; vertical-align: bottom; width: 1rem; } 
+.BR-CartLink { color: $Blue; display: none; font-size: 1.9rem; font-weight: 800; line-height: 1em; text-align: right; text-decoration: none; text-transform: uppercase; @include FlexGrow(1); 
+    
+    @include breakpoint(large) { 
+        display: inline-block;
+    }
+}
+.BR-CartIcon { display: inline-block; fill: $Grey; margin-right: -.2rem; width: 1.8rem; }
+.BR-SiteSearch { margin-top: .8em; @include FlexBasis(100%);
+    form { @include FlexBox; }
+    input[type="text"] { background: $NearWhite; border: 1px solid #ccc; margin: 0; }
+    button { border: none; border-radius: 0; box-shadow: none; padding-left: .6em; padding-right: .6em; 
+        @include breakpoint(medium) {
+            padding-left: 1em; padding-right: 1em;
+        }
+    }
+    
+    @include breakpoint(large) {
+        margin-top: 0; @include FlexBasis(39%);
+    }
+    @include breakpoint(xlarge) {
+        @include FlexBasis(33%);
+    }
+}
+.ui-autocomplete { background: $LightGrey; border-radius: 0 !important; font-size: .8rem !important; margin-top: .4rem !important; padding: 1rem !important;
+    
+    @include breakpoint(map-get($breakpoints, medium) down) {
+        left: 0 !important; width: auto !important;
+    }
+
+    li { margin: 0 !important; }
+}
+.ui-autocomplete-category { display: block; @extend h4; }
+.ui-menu .ui-menu-item { 
+    margin: 0 0 .5em !important;
+    a { margin: 0 !important; }
+    &, & a { background: none !important; border: none !important; border-radius: 0 !important; display: block !important; color: $BasicTextColor !important;
+        &:hover { background: $DarkGrey !important; border: none !important; border-radius: 0 !important; display: block !important; color: #fff !important; margin: 0 0 .5em !important; }
+    }
+}
+.ui-helper-hidden-accessible { display: none; }
+
+//Mobile Nav
+.BR-MobileTrigger { color: $Blue; cursor: pointer; display: block; font-size: .7rem; line-height: 1em; text-align: center;
+
+    @include breakpoint(large) {
+        display: none;
+    }
+
+    .BR-Icon { display: block; font-size: 2rem; line-height: 1em; }
+}
+.BR-MobileNav { background: $NearWhite; bottom: 0; overflow-y: hidden; padding: 1rem 0 1rem; position: fixed; right: 0; top: 0; width: 85%; -webkit-overflow-scrolling: touch; @include BoxSizing; @include Transform(translate(20%,0)); @include Transition(all,.3s cubic-bezier(0.6, 0, 0.4, 1));
+    
+    @include breakpoint(large) {
+        display: none;
+    }
+
+    &__slide { overflow-y: scroll; @include Transform(translate(0,0)); }
+}
+.BR-MobileCartLink { border-radius: .5em; border: 1px solid $LightBlue; color: $Blue; display: inline-block; margin: 1rem 5vw 0; padding: .5em; text-align: left; @extend .BR-CartLink; display: inline-block;
+    .BR-CartIcon { fill: $Blue; 
+        &:hover { fill: $LightBlue; }
+    }
+}
+.BR-MobileMainNav { flex-grow: 1; margin-bottom: 2rem; 
+    img { display: none; }
+}
+.BR-MobileNavSection { margin-bottom: 1em;
+    .BR-MegaMenuColumnTitle { color: $BasicTextColor; display: block; font-size: calc(1rem + 1vh); padding: .3em 5vw; line-height: 1.1em; text-decoration: none; }
+    a { color: $Blue; display: block; font-size: calc(1rem + 1vh); padding: .3em 5vw; line-height: 1.1em; text-decoration: none; 
+        &:hover { background: $LightBlue; color: #fff; }
+    }
+}
+.BR-MobileNavTitle { color: $BasicTextColor; border-top: 1px solid $Grey; display: block; font-size: calc(1rem + 1.5vh); margin-top: .5rem; padding: 1.5rem 5vw .3em; line-height: 1.1em; text-decoration: none; 
+    &:first-child { border: none; }
+}
+.BR-MobileUtilityNavLink { border-top: 1px solid $LightBlue; color: $Blue; display: block; padding: .3em 5vw; text-decoration: none; @extend .BR-UtilityNavLink; 
+    &:first-child { border: none; padding: .3em 5vw; }
+    &:hover { color: $LightBlue; }
+
+    svg { vertical-align: initial; }
+}

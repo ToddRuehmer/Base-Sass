@@ -1,0 +1,147 @@
+﻿.BR-Icon {
+    font-family: 'FontAwesome';
+    font-style: normal;
+}
+.BR-More {
+    color: $LightAccent;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.BR-Close {
+    color: #000;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.BR-Btn1 {
+    @include Button;
+}
+.BR-Btn2 {
+    @extend .BR-Btn1;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: $Accent;
+    font-size: 1rem;
+    padding: 0;
+    &:after {
+        opacity: 0;
+        position: relative;
+        right: 2rem;
+        top: .05em;
+        @include css-triangle(.4em, $Grey, right);
+        @include Transition(all, .2s);
+        display: inline-block;
+    }
+    &:hover { color: $Accent;
+        &:after { opacity: 1; right: 0; }
+    }
+}
+.BR-Btn3 {
+    @extend .BR-Btn2;
+    color: $BasicTextColor;
+    &:hover { color: $Accent; }
+}
+.BR-ImgBtn {
+    border-radius: 13px;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 213px;
+    @include Transform(translate(0,0));
+    @include Transition(all, .2s);
+    &:hover { @include Transform(translate(0,-10px)); box-shadow: 0 10px 20px rgba(0,0,0,.4); }
+}
+
+.BR-ImgBtnText { bottom: 0; color: $BasicTextColor; font-size: .8rem; font-weight: bold; margin-bottom: .5em; left: 50%; max-width: 95%; position: absolute; right: 0; text-transform: uppercase; width: 100%; @include Transform(Translate(-50%,0)); }
+.BR-Cite { font-size: 1.4rem; font-weight: 200; }
+
+.BR-Field {
+    @include ClearFix;
+    clear: both;
+    margin: 0 0 16px 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    & label {
+        @include BoxSizing;
+        display: block;
+        font-size: .8rem;
+        line-height: 1.1rem;
+        padding: 6px 0;
+    }
+    & span {
+        @include BoxSizing;
+        margin-right: 5%;
+        padding: 6px 10px;
+    }
+}
+.BR-Field.BR-vSubmit {
+    margin: 30px 0 0 0;
+    width: 100%;
+}
+
+.BR-Modal {
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9000;
+
+    .BR-Close {
+        border-radius: 5000px;
+        color: #fff;
+        font-size: 2rem;
+        font-weight: bold;
+        height: 3rem;
+        line-height: 3rem;
+        position: absolute;
+        right: 1rem;
+        text-align: center;
+        text-decoration: none;
+        top: 1rem;
+        width: 3rem;
+        &:hover {
+            background: $LightBlue;
+        }
+    
+        @include breakpoint(large) { 
+            height: 3vw;
+            line-height: 3vw;
+            width: 3vw;
+        }
+    }
+}
+.BR-ModalInner {
+    background: $Blue;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .BR-Show & {
+        opacity: 1;
+    }
+}
+.BR-ModalContent {
+    background: #fff;
+    margin: 0 auto;
+    
+    @include breakpoint(large) { 
+        max-width: 80%;
+    }
+
+    iframe {
+        height: 96%;
+        left: 5%;
+        position: absolute;
+        top: 4%;
+        width: 90%;
+    }
+}
