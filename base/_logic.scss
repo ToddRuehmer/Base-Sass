@@ -91,6 +91,12 @@
     -ms-clip-path: $arguments;
     clip-path: $arguments;
 }
+
+@mixin ColumnCount($count) {
+	-webkit-column-count: $count;
+    -moz-column-count: $count;
+    column-count: $count;
+}
 	
 @mixin ClearFix() {
 	* html & {
