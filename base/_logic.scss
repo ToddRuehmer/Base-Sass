@@ -1,16 +1,27 @@
 ﻿//Mixins
+@mixin AlignItems($arguments) {
+    align-items: $arguments;
+    -webkit-align-items: $arguments;
+}
+@mixin JustifyContent($arguments) {
+    justify-content: $arguments;
+}
+@mixin FlexDirection($arguments) {
+    flex-direction: $arguments;
+}
+@mixin FlexWrap($arguments) {
+    flex-wrap: $arguments;
+}
 @mixin FlexBox($justify:space-between,$alignItems:stretch,$direction:row,$wrap:nowrap) {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    justify-content: $justify;
-    -webkit-justify-content: $justify;
-    align-items: $alignItems;
-    -webkit-align-items: $alignItems;
-    flex-direction: $direction;
-    flex-wrap: $wrap;
+    @include AlignItems($justify);
+    @include AlignItems($alignItems);
+    @include FlexDirection($direction);
+    @include FlexWrap($wrap);
 }
 @mixin Flex($arguments) {
 	flex: $arguments;
